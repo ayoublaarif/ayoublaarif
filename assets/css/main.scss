@@ -1,0 +1,35 @@
+$bgColor: #979797;
+$priColor: #44378E;
+$secColor: #F5E7DC;
+$trdColor: #FEDDF4;
+$frdColor: #EA5830;
+
+%montserratt{
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+
+  @mixin fontfamily($f,$s,$sub,$w) {
+    font-family: $f;
+    font-weight: $w;
+    @include fontsize($s,$sub);
+  }
+
+  @mixin montserrat($s,$sub,$w) {
+    @include fontfamily(Montserrat,$s,$sub,$w);
+  }
+
+  @mixin ivymode($s,$sub,$w) {
+    @include fontfamily(Ivy Mode,$s,$sub,$w);
+  }
+
+
+  @mixin fontsize($s,$sub) {
+    font-size: $s;
+    @media (max-width: 768px){
+        font-size: $s - $sub;
+        
+    }
+  }
+  

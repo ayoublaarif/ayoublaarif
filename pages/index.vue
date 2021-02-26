@@ -1,0 +1,180 @@
+<template>
+  <div data-scroll-container ref="app" class="app">
+    <div class="bg"></div>
+    <div class="bg-t"></div>
+  <main id="main">
+    <Hero/>
+    <Services/>
+    <Works/>
+    </main>
+</div>
+</template>
+
+<script>
+import Hero from '@/components/hero'
+import Services from '@/components/Services.vue'
+import Works from '@/components/Works.vue'
+
+
+export default {
+
+  data() {
+    return {
+      lmS: null,
+      tr: null
+    };
+  },
+    transition: {
+    name: 'custom',
+    mode: 'out-in',
+    css: true,
+    duration: { enter: "500ms", leave: "500ms" },
+    beforeLeave(el){        this.tr = this.$gsap.timeline({
+            defaults: {duration: 0.5, ease: 'expo'}
+        });
+
+        console.log("Leaving, ", el.querySelector(".bg-t"));
+        this.tr.to(el.querySelector(".bg-t"), {
+          height: "100%",
+
+        })
+    },
+  },
+
+   /* transition: {
+    name: 'custom',
+    mode: 'in-out',
+    appear: true,
+    css: true,
+    duration: { enter: "0ms", leave: "1000ms" },
+    beforeEnter(el){
+      //this.listWorks = [...el.querySelectorAll(".p")];
+      //console.log("We're entering", this.listWorks[0]);
+      var i=0;
+      for(i=0;i<6;i++){
+        this.$gsap.set(el.querySelector(".p"+i), {
+        })
+      }
+       
+    },
+    afterEnter(el){
+      
+      
+    },
+    beforeLeave(el){
+      
+      //var i=0;for(i=0;i<6;i++){}
+        this.$gsap.to(el.querySelector(".bg-t"), {
+          duration: 1,
+          height: "100%",
+          ease:"expo"
+            //x: '145%',
+        })
+        this.$gsap.to(el.querySelector("#main"), {
+          duration: 1,
+          y: "-15%",
+          opacity: 0
+            //x: '145%',
+        })
+      
+      console.log("We're leaving", el.querySelectorAll(".p"))
+    },
+    leave(el){
+      
+    }
+  },*/
+  components: { Services, Works },
+  
+  
+  mounted() {
+
+
+    this.lmS = new this.locomotiveScroll({
+      el: this.$refs.app,
+      smooth: true
+    });
+
+    this.lmS.scrollTo("#main");
+   
+   /*this.lmS = new this.locomotiveScroll({
+      el: this.$refs.app,
+      smooth: true
+    });
+  console.log("Mounted");
+  
+
+    /* 
+    const scroll = new LocomotiveScroll({
+      el: this.$refs.app,
+      smooth: true,
+      smoothMobile: true,
+    })*/
+  },
+  destroyed(){
+    this.lmS.destroy();
+ console.log("Counted");
+  }
+
+
+
+}
+ 
+</script>
+
+<style lang="scss" scoped>
+$t-duration: 800ms;
+.app{
+  width: 100vw;
+  overflow: hidden;
+}
+main{
+  max-width: 80vw;
+  margin: 0 auto;
+}
+.bg{
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        z-index: -100;
+        background: $bgColor 0% 0% no-repeat;
+        opacity: 1;
+        filter: blur(50px);
+        -webkit-filter: blur(50px) contrast(0%) opacity(12%);
+        }
+.bg-t{
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 0%;
+        z-index: 800;
+        background-color: #000000;
+        opacity: 1;
+        }
+       
+/*
+.page-enter-active, .page-leave-active {
+  transition-duration: $t-duration * 2;
+  transition-property: transform,background-color;
+  
+  
+}
+
+.page-leave-active {
+  .bg-t{
+    transform:scaleY(100%);
+  }
+}
+.page-enter-active,
+.page-leave-active {
+  transition-duration: $t-duration * 2;
+  transition-property: transform,background-color;
+  
+  
+}
+.page-leave-active {
+  .me-works .p1{
+    transform: rotate(20deg);
+    background-color: orange;
+  }
+}*/
+</style>
