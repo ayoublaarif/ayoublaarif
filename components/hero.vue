@@ -215,7 +215,7 @@ export default {
     .hero-head{
 
         font-size: 7rem;
-        font-weight: 300;
+        font-weight: 400;
         
         max-width: 100%;
         //text-align: left;

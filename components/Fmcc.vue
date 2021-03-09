@@ -1,5 +1,5 @@
 <template>
-    <div class="me-fmc" data-scroll-section id="pin">
+    <div class="me-fmc" data-scroll-section id="pin" ref="biyc">
         <div class="container">
             <div class="fmc">
                 <div data-scroll data-scroll-sticky data-scroll-target="#pin" class="fmc-title">
@@ -7,9 +7,13 @@
                 </div>
                 <img class="biy-2" src="@/assets/img/biy-2.jpg"/>
                 <div class="fmc-secone">
-                    <p class="head-one">Non-profit Organisation</p>
-                    <p class="head-two">Website Redesign</p>
-                    <div class="fmc-description">
+                    <div class="head-one-transition"  style="overflow:hidden;">
+                        <p class="head-one">Website Redesign</p>
+                    </div>
+                    <div class="head-two-transition"  style="overflow:hidden;">
+                        <p class="head-two">Non-profit Organisation</p>
+                    </div>
+                    <div class="description-transition"  style="overflow:hidden;"> 
                     <p class="description">The believe in yourself project promotes <br/> 
                     a postive body image among  young women <br/> 
                     and provides charitable donattions of dresses <br/>
@@ -18,7 +22,9 @@
                     </div>
                 </div>
                 <div class="biy-gallery">
-                    <img class="biy biy-3" src="@/assets/img/biy-3.jpg"/>
+                    <div class="biy-gallery-transition" style="overflow:hidden;">
+                        <img class="biy biy-3" src="@/assets/img/biy-3.jpg"/>
+                    </div>
                     <img class="biy biy-4" src="@/assets/img/biy-4.jpg"/>
                     <img class="biy biy-5" src="@/assets/img/biy-5.jpg"/>
                     <img class="biy biy-6" src="@/assets/img/biy-6.jpg"/>
@@ -32,10 +38,25 @@
 
 <script>
 export default {
+ data() {
+    return {
+      lmD: null,
+    };
+  },
+  mounted() {
 
-mounted(){
-    
-}
+    this.lmD = new this.locomotiveScroll({
+      el: this.$refs.biyc,
+      smooth: true,
+      direction: "horizontal",
+      lerp: 0.05
+    }); 
+  },
+  destroyed(){
+    this.lmD.destroy();
+    console.log("Counted");
+  }
+
 }
 </script>
 
@@ -46,7 +67,7 @@ body{
 }
 .me-fmc{
     
-    margin: 0;
+    margin: 0 ;
     width: 600vw;
     
     
@@ -56,9 +77,13 @@ body{
         
 
         .fmc{
+            
             display: flex;
             height: 100vh;
             .fmc-title{
+                //border: 2px solid white;
+                overflow: hidden;
+                padding: 0 0.5rem;
                 position: fixed;
                 top: 40vh;
                 left: 20vw;
@@ -83,19 +108,26 @@ body{
                 position: absolute;
                 z-index: 2;
                 left: 36vw;
-                top: 56vh;
-            }
-            
-            .head-one,.head-two{
-                @include montserrat(2.4rem,1rem,400);
+                top: 38vh;
                 
-            }
+                .head-one{
+                    @include montserrat(1rem,0rem,400);
+                    margin-bottom: 8.5rem; 
+                    opacity: 0.24;
+                }
+
+                .head-two{
+                @include montserrat(2.4rem,1rem,500);
+                }
             .description{
                 @include montserrat(1rem,0rem,400);
                 margin: 1rem 0.5rem;
                 max-width: 370px !important;
                 
             }
+            }
+            
+            
 
 
             .biy-gallery{
@@ -105,6 +137,10 @@ body{
                 position: absolute;
                 left: 75vw;
                 display: flex;
+
+                .biy-gallery-transition{
+                    margin: auto 0;
+                }
                 .biy{
                     border: 2px solid #fff;
                     width: auto;

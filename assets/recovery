@@ -1,0 +1,367 @@
+<template>
+<div data-scroll-section class="me-hero">
+  
+  <div class="eclipse-one"></div>
+  <div class="eclipse-two"></div>
+
+  <div data-scroll-section  class="container">
+      
+        <div class="hero-head">
+            <div class="content">
+                <div class="face"><img src="@/assets/svg/face.svg" class="face-svg"/></div>
+                <div class="ayoub"><p class="ayoub-mask">I'M AYOUB A</p></div>
+                <div class="desc"><p class="desc-mask">a Creative Designer<br>
+                And Vue.js Developer<br>
+                Based in Rabat</p></div>
+            </div>
+            <div class="hello"><img src="@/assets/svg/hello.svg" class="hello-svg"/></div>
+        </div>
+      
+  </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+    mounted: function(){
+
+
+    },
+    methods: {
+        clickedA(){
+          const tlw = this.$gsap.timeline({
+            defaults: {duration: 4, ease: 'expo'}
+        });
+
+        tlw.to(".ayoub-mask", {
+            y: "50%",
+            opacity: 0.5
+            //rotation: 10
+        }, 0)  
+        console.log("clicked")
+        }
+        
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+
+
+.me-hero{
+    .container {
+        //border: 2px purple solid;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        
+        }
+
+        // $bg: #979797 ;
+
+        
+    .hero-head{
+
+        @include ivymode(5rem,3rem,400);
+        //border: blue 2px solid;
+        height: 75vh;
+        width: 64vw;
+        margin: 5rem auto 0;
+
+        text-align: center;
+        align-items: center;
+        display: grid;
+        grid-template-areas:
+            'face'
+            'ayoub'
+            'desc';
+        grid-row-gap: 0rem;
+        grid-column-gap: 4rem;
+
+        //top: 6vh;
+
+        .content{
+            //margin-top: -20rem ;
+        }
+
+
+        .face{
+            position: relative;
+            top: -8rem;
+            width: 14rem;
+            z-index: 80;
+//
+            margin: 0 auto;
+            .face-svg{
+                width: 100%;
+            }
+            
+        }
+
+        .ayoub{
+            position: relative;
+            top: -8rem;
+            @include montserrat(1.4rem,0rem,300);
+            
+        }
+
+        .desc{
+            position: relative;
+            top: -6rem;
+
+            
+        }
+
+        .hello{
+            position: absolute;
+            height:  75vh;
+            width: 64vw;
+            
+
+            .hello-svg{
+                height: 100%;
+            }
+        }
+        
+    }
+  
+} 
+
+
+
+
+
+@media (max-width: 768px){
+.me-hero{
+
+    
+    .hero-head{
+
+        
+    }
+
+
+    .eclipse-one{
+        position: fixed;
+        top: -8rem;
+        left: -15rem;
+    }
+    .eclipse-two{
+        position: fixed;
+        top: 40rem;
+        left: 16rem;
+    }
+    
+}
+
+    
+
+
+}
+
+.eclipse-one{
+  position: absolute;
+  top: 90px;
+  left: 120px;
+  width: 460px;
+  height: 460px;
+  z-index: -500;
+  border-radius: 50%;
+  background: #44378E 0% 0% no-repeat padding-box;
+  opacity: 0;
+  filter: blur(50px);
+}
+.eclipse-two{
+  position: absolute;
+  top: 490px;
+  left: 886px;
+  width: 354px;
+  height: 354px;
+  z-index: -500;
+  transform: matrix(0.99, -0.12, 0.12, 0.99, 0, 0);
+  background: #F5E7DC 0% 0% no-repeat padding-box;
+  opacity: 0;
+  filter: blur(50px);
+}
+
+
+
+
+</style>
+
+
+
+
+<template>
+    <div class="me-ggym" data-scroll-section id="pin" ref="ggymmc">
+        <div class="container">
+            <div class="ggym">
+
+                <div class="ggym-image">
+                    <img class="ggym-0" src="@/assets/img/ggym/0.png"/>
+                </div>
+
+                <div data-scroll data-scroll-sticky data-scroll-target="#pin" class="ggym-title" style="">
+                    <p class="title">GGym Store</p>
+                </div>
+                <div class="ggym-secone">
+                    <div class="head-one-transition"  style="overflow:hidden;">
+                        <p class="head-one">Website Design</p>
+                    </div>
+                    <div class="head-two-transition"  style="overflow:hidden;">
+                        <p class="head-two">Workout Equipmenet</p>
+                    </div>
+                    
+                    <div class="description-transition"  style="overflow:hidden;"> 
+                    <p class="description">The believe in yourself project promotes <br/> 
+                    a postive body image among  young women <br/> 
+                    and provides charitable donattions of dresses <br/>
+                    to under privileged girls for school dances <br/>
+                    and special occasions.</p>
+                    </div>
+                </div>
+                <div class="ggym-gallery">
+                    <div class="ggym-gallery-transition" style="overflow:hidden;">
+                        <img class="ggym ggym-1" src="@/assets/img/ggym/1.png"/>
+                    </div>
+                    <img class="ggym ggym-2" src="@/assets/img/ggym/2.png"/>
+                    <img class="ggym ggym-3" src="@/assets/img/ggym/3.png"/>
+                    <img class="ggym ggym-4" src="@/assets/img/ggym/4.png"/>
+                    <img class="ggym ggym-5" src="@/assets/img/ggym/5.png"/>
+                    <img class="ggym ggym-6" src="@/assets/img/ggym/6.png"/>
+                    <img class="ggym ggym-7" src="@/assets/img/ggym/7.png"/>
+                    <img class="ggym ggym-8" src="@/assets/img/ggym/8.png"/>
+                    <img class="ggym ggym-9" src="@/assets/img/ggym/9.png"/>
+                    <img class="ggym ggym-10" src="@/assets/img/ggym/10.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+data(){
+    return{
+        lmD: null,
+    }
+},
+
+  mounted() {
+
+    this.lmD = new this.locomotiveScroll({
+      el: this.$refs.ggymmc,
+      smooth: true,
+      lerp: 0.05
+    }); 
+  },
+  destroyed(){
+    this.lmD.destroy();
+    console.log("Counted");
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+body{
+    
+}
+.me-ggym{
+    
+  max-width: 80vw;
+  margin: 0;
+
+
+    border: 8px solid wheat;
+    
+   .container {
+       //display: flex;
+        //overflow: auto;
+        
+
+        .ggym{
+            display: grid;
+            grid-template-areas: 'title' 'secone' 'gallery';
+
+            .ggym-image{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index:1;
+                .ggym-0{
+                    
+                    width: 100vw;
+                    height: auto;
+                    
+                    //border: 2px solid wheat;
+                }
+            }
+
+            
+
+            .ggym-title{
+
+                //border: 2px solid white;
+                color: #ff5900;
+                margin-top: 32rem;
+                overflow: hidden;
+                grid-area: title;
+                z-index: 50;
+                .title{
+                @include ivymode(6.5rem,3.5rem,400);
+                //text-transform: uppercase;
+                }
+            }
+
+            .ggym-secone{
+                grid-area: secone;
+                z-index: 5;
+                margin: 2rem 0;
+            }
+            
+            .head-one,.head-two{
+                @include montserrat(2.4rem,1rem,400);
+                
+            }
+            .description{
+                @include montserrat(1rem,0rem,400);
+                margin: 1rem 0rem;
+                max-width: 370px !important;
+                
+            }
+
+
+            .ggym-gallery{
+                grid-area: gallery;
+                margin: 1rem 0;
+                z-index: 2;
+                //background-color: white;
+                //padding: 0 5rem;
+                height: 100%;
+                width: 100%;
+
+                .ggym-gallery-transition{
+                    margin: auto 0;
+                }
+                .ggym{
+                    width: 100%;
+                    margin: 1.4rem 0;
+                }
+                
+            }
+        }
+    
+
+}
+
+}
+
+
+</style>

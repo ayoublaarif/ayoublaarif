@@ -10,13 +10,14 @@
                     <p>Believe In yourself</p>
                     <p>GoatShop</p> 
                     <p>Quuvo Generator</p> -->
-                    <div ref="work" v-for="work in works" :key="work.className" :class="work.className" 
+                    <div id="work" ref="work" v-for="work in works" :key="work.className" :class="work.className" 
 					 data-scroll 
-					v-on:mouseover="mouseOn(work.id,work.className)" 
+					v-on:mouseenter="mouseOn(work.id,work.className)" 
 					v-on:mouseleave="mouseOff()"
-					v-on:mousemove="mouseMove"
+
+                @click="giveColor(work.color)"
 					>
-                    
+                   <!-- <span class="#C80000" color="#C80000" style="display"></span> -->
 						<div ref="reveal" class="hover-reveal">
 							<div ref="revealInner" class="hover-reveal__inner">
 								 <div ref="revealImage" class="hover-reveal__img" :style="{backgroundImage:  'url(' +require('@/assets/img/'+work.srcUrl+'.jpg') + ')' }"></div>
@@ -24,8 +25,25 @@
 							</div>
 						</div>
 
-                    <NuxtLink class="p" :to="work.toUrl">{{work.name}}</NuxtLink>
-                    <!--<a class="p" :href="work.toUrl">{{work.name}}</a>-->
+                    <NuxtLink class="p"  :to="work.toUrl">
+                        <p class="work-number">0{{work.n}}</p>
+                        <div class="work-detail">
+                            <p class="work-name">{{work.name}}</p>
+                            <p class="work-head">{{work.head}}</p>
+                        </div>
+                        <div class="work-desc">
+                            <div class="work-line"></div>
+                            <div class="work-desc-child">
+                                <p class="work-type">Web Design</p>
+                                <p class="work-date">07/2020</p>
+                            </div>
+                        </div>
+                       <!-- <span class="m-l-12 work-name-re">{{work.name.substr(work.name.indexOf(" ") + 1)}}</span> -->
+
+                    </NuxtLink>
+                    <!--
+                        :class="work.m"
+                        <a class="p" :href="work.toUrl">{{work.name}}</a>-->
 					</div>
             </div>
         </div>
@@ -38,11 +56,12 @@ export default {
     data() {
     return {
       works : [
-        {id:0 ,className:"p1", ds_speed:"0.2", name:"Follow my club", srcUrl:'s30', toUrl:'/works/fmc'},
-        {id:1 ,className:"p2", ds_speed:"0.3", name:"Agdali School", srcUrl:'s31', toUrl:'/works/as'},
-		{id:2 ,className:"p3", ds_speed:"0.4", name:"Believe In yourself", srcUrl:'s32', toUrl:'/works/biy'},
-		{id:3 ,className:"p4", ds_speed:"0.5", name:"GoatShop", srcUrl:'s33', toUrl:'/works/gs'},
-        {id:4 ,className:"p5", ds_speed:"0.6", name:"Quuvo Generator", srcUrl:'s34', toUrl:'/works/qg'},
+        {id:0 ,className:"p1", ds_speed:"0.2", name:"Footiale", head:"- Follow my club", srcUrl:'s30', toUrl:'/works/fmc', m:'m-l-12', n:1, color:'#000'},
+        {id:1 ,className:"p2", ds_speed:"0.3", name:"Agdali", head:"- Students Monitoring", srcUrl:'s31', toUrl:'/works/as', m:'m-l-12', n:2, color:'#C80000'},
+		{id:2 ,className:"p3", ds_speed:"0.4", name:"Believe In Yourself", head:" - Donation of dresses", srcUrl:'s32', toUrl:'/works/biy', m:'m-l-12', n:3, color:'#C80000'},
+		{id:3 ,className:"p4", ds_speed:"0.5", name:"GGym ", head:"- Workout Equipmenet", srcUrl:'s33', toUrl:'/works/ggym', m:'m-l-12', n:4, color:'#14151c'},
+        {id:4 ,className:"p5", ds_speed:"0.6", name:"Roller Derby", head:"Follow my club", srcUrl:'s34', toUrl:'/works/roller-derby', m:'m-l-12', n:5, color:'#F7FAEE'},
+        {id:5 ,className:"p6", ds_speed:"0.7", name:"Quuvo Generator", head:" - Automatic videos", srcUrl:'s35', toUrl:'/works/qg', m:'m-l-12', n:6, color:'#C80000'},
     ],
     animatableProperties: {
             // translationX
@@ -58,7 +77,8 @@ export default {
 	sectionLeft: 0,
 	activeImage: "",
 	revealInner: null,
-	revealImage: null,
+    revealImage: null,
+    mouseison: false,
     };
     },
     mounted(){
@@ -75,7 +95,9 @@ export default {
     methods: {
 
 
-
+    giveColor(color){
+        this.$emit('giveColor',color);
+    },
 
     calcBounds(){
 		  this.bounds = {
@@ -86,6 +108,7 @@ export default {
 
 
 	  mouseOn(modelID,className){
+         
             this.activeImage = className;
             
 			this.revealInner = this.$refs.revealInner[modelID];
@@ -94,6 +117,8 @@ export default {
             this.firstRAFCycle = true;
             this.loopRender();
             console.log("active image 1: " +this.activeImage)
+       
+            
 		
 		
 	  },
@@ -275,16 +300,109 @@ export default {
         .works{
 
 
+
+
             overflow: hidden;
+
+            #work{
+                //border-top: #000000 solid 1px;
+                border-top: #000000 solid 1px;
+                //background-color: #000000;
+                padding: 2.4rem 2rem;
+                margin: 0 0;
+
+            }
             .p{
-                @include ivymode(6rem,2rem,300);
+                display: flex;
                 text-transform: uppercase;
+                //font-family: haigrast;
                 text-decoration: none;
                 cursor: pointer;
                 z-index: 50;
-                color: #000000 !important;
+                color: #000 !important;
+
+                .work-number{
+                    //border: #000000 2px solid;
+                    width: 12%;
+                    @media screen and (max-width: 768px) {
+                            width: 20%;
+                            margin-top: 0.8rem;
+                        }
+                    
+                    @include ivymode(2rem,0.6rem,400);
+                    margin-top: 0.2rem;
+
+
+                }
+
+                .work-detail{
+                    width: 64%;
+                    @media screen and (max-width: 768px) {
+                            width: 80%;
+                        }
+                    .work-name{
+                    //border: #000000 2px solid;
                 
+                    @include ivymode(4rem,2.4rem,400);
+                    line-height: 4rem;
+                    margin-bottom: 0.4rem;
+                     @media screen and (max-width: 768px) {
+                            line-height: 3rem;
+                            margin-bottom: 0rem;
+                        }
+                    //border: teal 1px solid;
+                    
+
+
+                    }
+
+                    .work-head{
+                        @include montserrat(1.2rem,0.4rem,400);
+                        opacity: 0.24;
+                        text-transform: none;
+
+
+                        //font-style: italic;
+                        //font-weight: 300;
+                    }
+
+                }
+
+                
+
+
+                .work-desc{
+                    width: 24%;
+                    display: flex;
+                    @media screen and (max-width: 768px) {
+                            display: none;
+                        }
+                    .work-line{
+                        border-left: #000000 1px solid;
+                        height: 100%;
+                        width: 2px;
+                        margin-left: 4rem;
+                        transform: rotate(12deg);
+                        opacity: 1;
+                    }
+                    .work-desc-child{
+                        
+                        //border: #000000 1px solid;
+                        margin: 1rem 0;
+                        margin-left: 2rem;
+                        .work-type{
+                            @include ivymode(2rem,0.2rem,400);
+                        }
+                        .work-date{
+                            @include montserrat(1.2rem,0.2rem,400);
+                            opacity: 0.24;
+                        } 
+                    }
+                    
+
+                }
             }
+
         }
     
 

@@ -21,9 +21,10 @@ $frdColor: #EA5830;
   }
 
   @mixin ivymode($s,$sub,$w) {
-    @include fontfamily(Ivy Mode,$s,$sub,$w);
+    @include fontfamily(Ivy mode,$s,$sub,$w);
   }
 
+  //LaLuxesSerifW05-Regular
 
   @mixin fontsize($s,$sub) {
     font-size: $s;
@@ -33,3 +34,24 @@ $frdColor: #EA5830;
     }
   }
   
+  @mixin margin-class($side, $number) {
+    $firstLetter: str-slice($side, 0, 1);
+    .m-#{$firstLetter}-#{$number}{
+       margin-#{$side}: #{$number}rem;
+    }
+  }
+  
+  $margins: (0, 20);
+  $sides: ("top", "right", "bottom", "left");
+  @mixin generate-margin(){
+    @for $margin from 1 through 20 {
+        @each $side in $sides{
+          @include margin-class($side, $margin);
+        }
+     }
+  }
+  
+  :root{
+    @include generate-margin();  
+  }
+

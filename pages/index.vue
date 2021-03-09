@@ -1,11 +1,11 @@
 <template>
   <div data-scroll-container ref="app" class="app">
     <div class="bg"></div>
-    <div class="bg-t"></div>
+    <div ref="bgt" class="bg-t"></div>
   <main id="main">
-    <Hero/>
+    <HomeHero/>
     <Services/>
-    <Works/>
+    <Works v-on:giveColor="getColor"/>
     </main>
 </div>
 </template>
@@ -14,6 +14,7 @@
 import Hero from '@/components/hero'
 import Services from '@/components/Services.vue'
 import Works from '@/components/Works.vue'
+import HomeHero from '@/components/homeHero.vue'
 
 
 export default {
@@ -21,7 +22,8 @@ export default {
   data() {
     return {
       lmS: null,
-      tr: null
+      tr: null,
+      bc: "#000",
     };
   },
     transition: {
@@ -29,16 +31,30 @@ export default {
     mode: 'out-in',
     css: true,
     duration: { enter: "500ms", leave: "500ms" },
-    beforeLeave(el){        this.tr = this.$gsap.timeline({
+    beforeLeave(el){   
+      console.log("Element: ", el);      
+      this.tr = this.$gsap.timeline({
             defaults: {duration: 0.5, ease: 'expo'}
         });
 
-        console.log("Leaving, ", el.querySelector(".bg-t"));
-        this.tr.to(el.querySelector(".bg-t"), {
+
+
+        this.tr
+       /* .set(el.querySelector(".bg-t"), 
+        {backgroundColor: "#EA5830"}
+        )*/
+        .to(el.querySelector(".bg-t"), {
           height: "100%",
 
         })
     },
+  },
+
+  methods:{
+    getColor(color){
+      console.log("Onnnn, ", this.bc);
+      this.$refs.bgt.style.backgroundColor = color;
+    }
   },
 
    /* transition: {
@@ -83,12 +99,15 @@ export default {
       
     }
   },*/
-  components: { Services, Works },
+  components: { Services, Works, HomeHero },
   
   
   mounted() {
+    //this.$refs.bgt.style.backgroundColor = this.bc;
 
 
+
+console.log("Color, ", this.bgcolor);
     this.lmS = new this.locomotiveScroll({
       el: this.$refs.app,
       smooth: true
@@ -123,7 +142,13 @@ export default {
 
 <style lang="scss" scoped>
 $t-duration: 800ms;
+:root{
+  --bgco: #EA5830;
+}
+
+$bgc:#000;
 .app{
+  
   width: 100vw;
   overflow: hidden;
 }
@@ -147,7 +172,8 @@ main{
         width: 100vw;
         height: 0%;
         z-index: 800;
-        background-color: #000000;
+        
+        background-color: $bgc;
         opacity: 1;
         }
        

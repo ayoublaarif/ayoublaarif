@@ -1,10 +1,20 @@
 <template>
 <div>
   
-    <Nuxt />
+    <Nuxt v-bind:isfirstimpression="isfirstimpression" />
     
 </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return{
+      isfirstimpression:true,
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 /*
