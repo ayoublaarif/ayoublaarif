@@ -365,3 +365,69 @@ body{
 
 
 </style>
+
+
+
+
+
+
+
+//Derby-template
+<template>
+    <div class="me-roller" data-scroll data-scroll-section id="pin" ref="roller">
+        <div class="bg-container">
+        </div>
+        <div data-scroll data-scroll-sticky data-scroll-target="#pin" class="roller-title" style="">
+                    <p class="title">Canada Roller Derby</p>
+        </div>
+        <div class="container"  id="container">
+            <div class="roller">
+                <img class="roller-0" src="@/assets/img/ggym/0.png"/>
+                <div class="roller-secone">
+                    <div class="head-one-transition"  style="overflow:hidden;">
+                        <p class="head-one">Website Reesign</p>
+                    </div>
+                    <div class="head-two-transition"  style="overflow:hidden;">
+                        <p class="head-two">Workout Equipmenet</p>
+                    </div>
+                    
+                    <div class="description-transition"  style="overflow:hidden;"> 
+                    <p class="description">The believe in yourself project promotes <br/> 
+                    a postive body image among  young women <br/> 
+                    and provides charitable donattions of dresses <br/>
+                    to under privileged girls for school dances <br/>
+                    and special occasions.</p>
+                    </div>
+                </div>
+                <div class="roller-gallery">
+                    <div class="roller-gallery-transition" style="overflow:hidden;">
+                        <img class="roller roller-1" src="@/assets/img/roller/1.png"/>
+                    </div>
+                    <img v-for="pic in gallery.slice(1)" :key="pic.id" class="m-t-auto m-b-auto m-l-6 m-r-6" :class="pic.className" :src="require('@/assets/img/roller/'+pic.id+'.png')"
+                    :style="'height:'+pic.height+'vh;z-index:'+Math.floor(Math.random() * 10)"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+// initialize the instance
+myScroll.init();
+
+// re-calc & update the postion
+myScroll.update();
+
+// destroy 
+myScroll.destroy();
+
+// restart
+myScroll.start();
+
+// stop
+myScroll.stop();
+
+// scroll to a specific element with an offset
+myScroll.scrollTo(target, offset);
+

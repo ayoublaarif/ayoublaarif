@@ -1,8 +1,9 @@
 <template>
   <div data-scroll-container ref="app" class="app">
     <div class="bg"></div>
-    <div ref="bgt" class="bg-t"></div>
+    <div ref="bgt" class="bg-t" id="bgt"></div>
   <main id="main">
+    <Header/>
     <HomeHero/>
     <Services/>
     <Works v-on:giveColor="getColor"/>
@@ -21,7 +22,7 @@ export default {
 
   data() {
     return {
-      lmS: null,
+      lmSi: null,
       tr: null,
       bc: "#000",
     };
@@ -104,16 +105,16 @@ export default {
   
   mounted() {
     //this.$refs.bgt.style.backgroundColor = this.bc;
-
-
+console.log(document.getElementById("bgt").getBoundingClientRect().height)
+ 
 
 console.log("Color, ", this.bgcolor);
-    this.lmS = new this.locomotiveScroll({
+    this.lmSi = new this.locomotiveScroll({
       el: this.$refs.app,
       smooth: true
     });
 
-    this.lmS.scrollTo("#main");
+    this.lmSi.scrollTo("#main");
    
    /*this.lmS = new this.locomotiveScroll({
       el: this.$refs.app,
@@ -130,7 +131,7 @@ console.log("Color, ", this.bgcolor);
     })*/
   },
   destroyed(){
-    this.lmS.destroy();
+    this.lmSi.destroy();
  console.log("Counted");
   }
 
@@ -140,7 +141,7 @@ console.log("Color, ", this.bgcolor);
  
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $t-duration: 800ms;
 :root{
   --bgco: #EA5830;
@@ -150,11 +151,24 @@ $bgc:#000;
 .app{
   
   width: 100vw;
+  height: 100%;
   overflow: hidden;
+
 }
 main{
   max-width: 80vw;
   margin: 0 auto;
+  //border: violet 4px solid;
+
+
+  display: grid;
+  grid-template-areas:
+  'header'
+  'sectionOne'
+  'section-two'
+  'section-three';
+  grid-row-gap: 4rem;
+
 }
 .bg{
         position: absolute;

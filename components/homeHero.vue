@@ -14,7 +14,7 @@
                 And Vue.js Developer<br>
                 Based in Rabat</p></div>
             </div>
-            <div class="hello"><img src="@/assets/svg/hello.svg" class="hello-svg"/></div>
+            <div class="hello"><img src="@/assets/svg/hello.svg" class="hello-svg"/><img src="@/assets/svg/hello-mobile.svg" class="hello-mobile-svg"/></div>
         </div>
       
   </div>
@@ -34,16 +34,23 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 
 
 .me-hero{
+
+    //border: teal 3px solid;
+    grid-area: sectionOne;
+    width: 80vw;
+    min-height: 80vmin;
+    margin-top: -4rem;
+    
     .container {
         //border: 2px purple solid;
         margin: 0 auto;
-        min-height: 100vh;
         display: flex;
+        
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -56,14 +63,30 @@ export default {
         
     .hero-head{
 
-        @include ivymode(5rem,3rem,400);
-        //border: blue 2px solid;
-        height: 75vh;
-        width: 64vw;
-        margin: 5rem auto 0;
+        $hv:68vh;
+        $wv:60vw;
 
+        
+        //border: blue 2px solid;
+        height: $hv;
+        width: $wv;
+        margin: 5rem auto 0;
+        display: grid;
+        grid-template-areas:
+            'hero';
         text-align: center;
         align-items: center;
+        @include breakpoint(phone) { 
+                height:  75vh;
+                width: 80vw;
+             }
+        
+
+        //top: 6vh;
+
+        .content{
+            //margin-top: -20rem ;
+            grid-area: hero;
         display: grid;
         grid-template-areas:
             'face'
@@ -71,18 +94,13 @@ export default {
             'desc';
         grid-row-gap: 0rem;
         grid-column-gap: 4rem;
-
-        //top: 6vh;
-
-        .content{
-            //margin-top: -20rem ;
         }
 
 
         .face{
             position: relative;
-            top: -8rem;
-            width: 14rem;
+            top: -7rem;
+            width: 8.4rem;
             z-index: 80;
 //
             margin: 0 auto;
@@ -94,31 +112,50 @@ export default {
 
         .ayoub{
             position: relative;
-            top: -8rem;
-            @include montserrat(1.4rem,0rem,300);
+            top: -6rem;
+            @include montserrat(1.2rem,0rem,300);
             
         }
 
         .desc{
+            @include ivymode(3.2rem,0rem,400);
             position: relative;
-            top: -6rem;
+            top: -5rem;
 
             
         }
 
         .hello{
             //border: black 2px solid;
-            position: absolute;
-            height:  75vh;
-            width: 64vw;
-            @media (max-width: 768px){
-                display: none;
 
-            }
+            
+
+            grid-area: hero;
+            position: relative;
+            height: $hv;
+            width: $wv;
+            @include breakpoint(phone) { 
+                height:  75vh;
+                width: 80vw;
+             }
 
             .hello-svg{
+                
                 height: 100%;
                 width: 100%;
+                @include breakpoint(phone) { 
+                    display: none;
+                }
+                
+            }
+            .hello-mobile-svg{
+                display: none;
+                height: 100%;
+                width: 100%;
+                @include breakpoint(phone) { 
+                    
+                    display: unset;
+                }
             }
         }
         
@@ -159,6 +196,8 @@ export default {
 }
 
 .eclipse-one{
+
+    display: none;
   position: absolute;
   top: 90px;
   left: 120px;
@@ -167,10 +206,12 @@ export default {
   z-index: -500;
   border-radius: 50%;
   background: #44378E 0% 0% no-repeat padding-box;
-  opacity: 0;
+  opacity: 0.2;
   filter: blur(50px);
 }
 .eclipse-two{
+
+        display: none;
   position: absolute;
   top: 490px;
   left: 886px;
@@ -179,7 +220,7 @@ export default {
   z-index: -500;
   transform: matrix(0.99, -0.12, 0.12, 0.99, 0, 0);
   background: #F5E7DC 0% 0% no-repeat padding-box;
-  opacity: 0;
+  opacity: 1;
   filter: blur(50px);
 }
 

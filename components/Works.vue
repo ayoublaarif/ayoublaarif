@@ -3,7 +3,7 @@
   <!-- ... -->
 
     <div data-scroll-section ref="s3" class="me-works">
-        <div class="container">
+        <div  class="container">
             <div class="works">
                    <!-- <p>Follow my club</p>
                     <p>Agdali School</p>
@@ -60,7 +60,7 @@ export default {
         {id:1 ,className:"p2", ds_speed:"0.3", name:"Agdali", head:"- Students Monitoring", srcUrl:'s31', toUrl:'/works/as', m:'m-l-12', n:2, color:'#C80000'},
 		{id:2 ,className:"p3", ds_speed:"0.4", name:"Believe In Yourself", head:" - Donation of dresses", srcUrl:'s32', toUrl:'/works/biy', m:'m-l-12', n:3, color:'#C80000'},
 		{id:3 ,className:"p4", ds_speed:"0.5", name:"GGym ", head:"- Workout Equipmenet", srcUrl:'s33', toUrl:'/works/ggym', m:'m-l-12', n:4, color:'#14151c'},
-        {id:4 ,className:"p5", ds_speed:"0.6", name:"Roller Derby", head:"Follow my club", srcUrl:'s34', toUrl:'/works/roller-derby', m:'m-l-12', n:5, color:'#F7FAEE'},
+        {id:4 ,className:"p5", ds_speed:"0.6", name:"Roller Derby", head:"Follow my club", srcUrl:'s34', toUrl:'/works/roller-derby', m:'m-l-12', n:5, color:'#fffff'},
         {id:5 ,className:"p6", ds_speed:"0.7", name:"Quuvo Generator", head:" - Automatic videos", srcUrl:'s35', toUrl:'/works/qg', m:'m-l-12', n:6, color:'#C80000'},
     ],
     animatableProperties: {
@@ -291,7 +291,9 @@ export default {
 }
 
 .me-works{
-    min-height: 100vh;
+    width: 80vw;
+    min-height: 100vmin;
+    grid-area: section-three;
     position: relative;
    //border: 2px solid teal;
    .container {
@@ -308,7 +310,7 @@ export default {
                 //border-top: #000000 solid 1px;
                 border-top: #000000 solid 1px;
                 //background-color: #000000;
-                padding: 2.4rem 2rem;
+                padding: 2rem 1rem;
                 margin: 0 0;
 
             }
@@ -324,12 +326,9 @@ export default {
                 .work-number{
                     //border: #000000 2px solid;
                     width: 12%;
-                    @media screen and (max-width: 768px) {
-                            width: 20%;
-                            margin-top: 0.8rem;
-                        }
+                    @include breakpoint(phone) { width: 20%;margin-top: 0.8rem; }
                     
-                    @include ivymode(2rem,0.6rem,400);
+                    @include ivymode(1.2rem,0rem,400);
                     margin-top: 0.2rem;
 
 
@@ -337,27 +336,22 @@ export default {
 
                 .work-detail{
                     width: 64%;
-                    @media screen and (max-width: 768px) {
-                            width: 80%;
-                        }
+                    @include breakpoint(phone) { width: 75%; }
                     .work-name{
                     //border: #000000 2px solid;
                 
-                    @include ivymode(4rem,2.4rem,400);
-                    line-height: 4rem;
-                    margin-bottom: 0.4rem;
-                     @media screen and (max-width: 768px) {
-                            line-height: 3rem;
-                            margin-bottom: 0rem;
-                        }
-                    //border: teal 1px solid;
+                        @include ivymode(2.4rem,0rem,400);
+                        line-height: 3rem;
+                        margin-bottom: 0.4rem;
+                        @include breakpoint(phone) { width: 75%; }
+                        //border: teal 1px solid;
                     
 
 
                     }
 
                     .work-head{
-                        @include montserrat(1.2rem,0.4rem,400);
+                        @include montserrat(1rem,0rem,400);
                         opacity: 0.24;
                         text-transform: none;
 
@@ -372,11 +366,10 @@ export default {
 
 
                 .work-desc{
+
                     width: 24%;
                     display: flex;
-                    @media screen and (max-width: 768px) {
-                            display: none;
-                        }
+                        @include breakpoint(phone) { display: none; }
                     .work-line{
                         border-left: #000000 1px solid;
                         height: 100%;
@@ -391,10 +384,10 @@ export default {
                         margin: 1rem 0;
                         margin-left: 2rem;
                         .work-type{
-                            @include ivymode(2rem,0.2rem,400);
+                            @include ivymode(1.2rem,0.2rem,400);
                         }
                         .work-date{
-                            @include montserrat(1.2rem,0.2rem,400);
+                            @include montserrat(0.8rem,0.2rem,400);
                             opacity: 0.24;
                         } 
                     }

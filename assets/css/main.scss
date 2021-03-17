@@ -4,6 +4,8 @@ $secColor: #F5E7DC;
 $trdColor: #FEDDF4;
 $frdColor: #EA5830;
 
+
+
 %montserratt{
     font-family: Montserrat;
     font-weight: 300;
@@ -28,7 +30,7 @@ $frdColor: #EA5830;
 
   @mixin fontsize($s,$sub) {
     font-size: $s;
-    @media (max-width: 768px){
+    @media (max-width: 600px){
         font-size: $s - $sub;
         
     }
@@ -49,9 +51,55 @@ $frdColor: #EA5830;
           @include margin-class($side, $margin);
         }
      }
+
+     @include generate-auto-margin();  
+
+  }
+  @mixin generate-auto-margin(){
+        @each $side in $sides{
+          $firstLetter: str-slice($side, 0, 1);
+          .m-#{$firstLetter}-auto{
+            margin-#{$side}: auto;
+          }
+        }
   }
   
   :root{
     @include generate-margin();  
   }
 
+
+  @mixin breakpoint($point) {
+    @if $point == phone {
+      @media (max-width: 600px) { @content; }
+    }
+    @else if $point == tablet {
+      @media (max-width: 1024px) { @content; }
+    }
+    @else if $point == desktop {
+      @media (max-width: 1600px)  { @content; }
+    }
+  }
+
+  @function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+  @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+  }

@@ -1,26 +1,23 @@
 <template>
-<div id="dd">
-    
-    <Nuxt />
+<div>
+     <agdali-d/>
     
 </div>
 </template>
 
 <script>
+import AgdaliD from '../components/Desktop/AgdaliD.vue'
 export default {
+  components: { AgdaliD },
   data(){
     return{
       isfirstimpression:true,
     }
-  },
-  mounted(){
-    
   }
-
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 /*
 html {
@@ -87,14 +84,9 @@ html {
   margin: 0;
 }
 
-$min_width: 300px;
-$max_width: 1600px;
-$min_font: 14px;
-$max_font: 18px;
+
 :root {
-  font-size: calc(6px + (22 - 6) * ((100vw - 320px) / (1600 - 320)));
-  //@include fluid-type($min_width, $max_width, $min_font, $max_font); 
-  //calc(4.5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+	font-size: 16px;
   scroll-behavior: smooth;
   font-family: Ivy Mode;
   -webkit-font-family: Ivy Mode;
@@ -110,9 +102,7 @@ $max_font: 18px;
 body {
 	margin: 0;
   width: 100vw;
-  height: 100%;
   display: block;
-  
 }
 
 
@@ -122,7 +112,7 @@ body {
 		height: 100%;
     }
     :root {
-      
+      font-size: 12px;
     }
     
 }

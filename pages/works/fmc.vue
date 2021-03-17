@@ -1,8 +1,13 @@
 <template>
 <div data-scroll-container ref="fmc" id="fmc" class="fmc-m">
+
+
+<Biymc v-if='fmcm=="sm"'/>
+    <Fmcc v-if='fmcm=="lg"'/>
     
-    <Biymc v-if="this.$screen.width<=768"/>
-    <Fmcc v-if="this.$screen.width>768"/>
+    
+        
+
 </div>
 </template>
 
@@ -19,7 +24,7 @@ export default {
   data() {
     return {
       tr: null,
-      fmcm: false,
+      fmcm:"",
       fmcmclass:""
     };
   },
@@ -99,7 +104,26 @@ export default {
         })
     },
   },
-  
+
+
+    created(){
+      if(this.$device.isDesktop){
+          this.fmcm="lg";
+      }else{
+          this.fmcm="sm";
+      }
+       console.log("Size, "+this.fmcm);
+  },
+  mounted(){
+    
+  },
+
+  /**/watch: {
+        '$screen.width'() {
+            this.fmcm=this.$mq;
+                  console.log("¡¡¡¡"+this.fmcm);
+        }
+    },
 
 
 

@@ -43,6 +43,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/device',
   ],
 
   router: {
@@ -56,7 +57,18 @@ export default {
     '@nuxtjs/style-resources',
     'nuxt-gsap',
     'vue-screen/nuxt',
+    ['nuxt-mq']
+
+
   ],
+
+  'mq': {
+    defaultBreakpoint: 'lg',
+    breakpoints: {
+      sm: 600,
+      lg: Infinity,
+    }
+  },
 
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

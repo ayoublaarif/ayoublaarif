@@ -1,46 +1,24 @@
 <template>
-<div id="dd">
+<div>
+    <agdali-m/>
     
-    <Nuxt />
     
 </div>
 </template>
 
 <script>
+import AgdaliM from '../components/Mobile/AgdaliM.vue'
 export default {
+  components: { AgdaliM },
   data(){
     return{
-      isfirstimpression:true,
-    }
-  },
-  mounted(){
-    
-  }
 
+    }
+  }
 }
 </script>
 
-<style lang="scss">
-
-/*
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<style lang="scss" scoped>
 
 *,
 *::before,
@@ -48,53 +26,16 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.bbbg{
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}*/
-
-
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-$min_width: 300px;
-$max_width: 1600px;
-$min_font: 14px;
-$max_font: 18px;
 :root {
-  font-size: calc(6px + (22 - 6) * ((100vw - 320px) / (1600 - 320)));
-  //@include fluid-type($min_width, $max_width, $min_font, $max_font); 
-  //calc(4.5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+	font-size: 12x;
   scroll-behavior: smooth;
   font-family: Ivy Mode;
   -webkit-font-family: Ivy Mode;
@@ -110,22 +51,10 @@ $max_font: 18px;
 body {
 	margin: 0;
   width: 100vw;
-  height: 100%;
   display: block;
-  
 }
 
 
-
-@media (max-width: 768px){
-	html, body {
-		height: 100%;
-    }
-    :root {
-      
-    }
-    
-}
 
 /*! locomotive-scroll v4.1.0 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {

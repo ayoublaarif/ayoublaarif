@@ -1,5 +1,5 @@
 <template>
-    <div class="me-fmc" data-scroll-section id="pin" ref="biyc">
+    <div class="me-fmc biy-desktop" data-scroll-section id="pin" ref="biyc">
         <div class="container">
             <div class="fmc">
                 <div data-scroll data-scroll-sticky data-scroll-target="#pin" class="fmc-title">

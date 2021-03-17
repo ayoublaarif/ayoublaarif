@@ -42,6 +42,7 @@
 
 <script>
 export default {
+
 data(){
     return{
         lmD: null,

@@ -49,7 +49,7 @@ export default {
     mounted: function(){
 
         const tl = this.$gsap.timeline({
-            defaults: {duration: 500, repeat:-1}
+            defaults: {duration: 300, repeat:-1}
         });
         tl
         
@@ -81,10 +81,12 @@ export default {
 <style lang="scss">
 
 .me-services{
-    min-height: 100vh;
+    width: 80vw;
+    min-height: 100vmin;
+    grid-area: section-two;
    .container {
         .title{
-            @include ivymode(4rem,1rem,400);
+            @include ivymode(3rem,0rem,400);
         }
         
 
@@ -92,7 +94,7 @@ export default {
             width: 400vw;
             display: grid;
             grid-template-areas: "firstgrp" "secondgrp";
-            @include ivymode(6rem,4rem,400);
+            @include ivymode(5rem,1rem,400);
             text-transform: uppercase;
             margin: 5rem 0;
             
@@ -123,7 +125,7 @@ export default {
             justify-content: space-between;
             align-items: center;
             .title{
-                @include montserrat(1.4rem,0.4rem,400);
+                @include montserrat(1.4rem,0rem,400);
             }
             .read-more-action{
                 display: grid;
