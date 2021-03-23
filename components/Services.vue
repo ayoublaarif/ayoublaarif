@@ -3,8 +3,8 @@
         <div data-scroll-section class="container">
 
             <p data-scroll data-scroll-speed="1.5" class="title">Services I can help  <br> you with</p>
-            <div data-scroll data-scroll-speed="1" class="services">
-                <div class="firstgrp">
+            <div  class="services">
+                <div  class="firstgrp">
                     <p>Front-end Development</p>
                     <p>Web Design</p>
                     <p>UI Design</p>
@@ -16,7 +16,7 @@
                     <p>UX Design</p>
                     <p>UI Animation</p>
                 </div>
-                <div  class="secondgrp">
+                <div class="secondgrp">
                     <p>Front-end Development</p>
                     <p>Web Design</p>
                     <p>UI Design</p>
@@ -29,6 +29,7 @@
                     <p>UI Animation</p>
                 </div>
             </div>
+
 
             <div data-scroll data-scroll-speed="0.25" class="read-more">
                 <p class="title">Maybe you want to know <br> what exactly I do</p>
@@ -45,10 +46,35 @@
 
 <script>
 export default {
+    //data-scroll data-scroll-speed="15" data-scroll-direction="horizontal"
 
     mounted: function(){
 
-        const tl = this.$gsap.timeline({
+        /*const tl = this.$gsap.timeline({
+            defaults: {duration: 100, repeat:-1}
+        });
+        tl
+        
+        .set(".firstgrp", {
+            x: "5%",
+            //rotation: 10
+        }, 0)
+        .set(".secondgrp", {
+            x: "-50%",
+            //rotation: 10
+        }, 0)*/
+
+
+        
+        const tl2 = this.$gsap.timeline({
+            defaults: {duration: 20, repeat:-1}
+        });
+        tl2.to(".read-more-svg", {
+            startAt: { rotation: 0},
+            rotation: 180
+        }, 0)
+
+    /*    const tl = this.$gsap.timeline({
             defaults: {duration: 300, repeat:-1}
         });
         tl
@@ -70,6 +96,8 @@ export default {
             startAt: { rotation: 0},
             rotation: 180
         }, 0)
+
+        */
 
     },
     methods: {
@@ -100,7 +128,9 @@ export default {
             
 
             p{
+                white-space: nowrap;
                 margin: 0rem 4rem;
+                //border: 2px solid black;
                 &:first-child{
                     margin-left: 0;
                 }
@@ -113,12 +143,12 @@ export default {
         .firstgrp{
             grid-area: firstgrp;
             display: flex;
-            margin: 0.4rem -20%;
+            //margin: 0.4rem -25%;
         }
         .secondgrp{
             grid-area: secondgrp;
             display: flex;
-            margin: 0.4rem -20%;
+            //margin: 0.4rem -70%;
         }
         .read-more{
             display: flex;

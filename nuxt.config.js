@@ -35,7 +35,15 @@ export default {
     {
       src: "~/plugins/locomotiveScroll.js",
       mode: "client"
-    }
+    },
+    {
+      src: "~/plugins/Splitting.js",
+      mode: "client"
+    },
+    { 
+      src: '~/plugins/vue-imagesLoaded', 
+      ssr: false 
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -61,6 +69,11 @@ export default {
 
 
   ],
+
+  loading: {
+    color: 'blue',
+    height: '5px'
+  },
 
   'mq': {
     defaultBreakpoint: 'lg',

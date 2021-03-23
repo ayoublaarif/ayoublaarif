@@ -9,10 +9,12 @@
         <div class="hero-head">
             <div class="content">
                 <div class="face"><img src="@/assets/svg/face.svg" class="face-svg"/></div>
-                <div class="ayoub"><p class="ayoub-mask">I'M AYOUB A</p></div>
-                <div class="desc"><p class="desc-mask">a Creative Designer<br>
-                And Vue.js Developer<br>
-                Based in Rabat</p></div>
+                <div class="ayoub"><p class="ayoub-mask" data-splitting>I'M AYOUB A</p></div>
+                <div class="desc">
+                    <p class="desc-mask" data-splitting>a Creative Designer</p>
+                    <p class="desc-mask" data-splitting>And Vue.js Developer</p>
+                    <p class="desc-mask" data-splitting>Based in Rabat</p>
+                </div>
             </div>
             <div class="hello"><img src="@/assets/svg/hello.svg" class="hello-svg"/><img src="@/assets/svg/hello-mobile.svg" class="hello-mobile-svg"/></div>
         </div>
@@ -43,8 +45,8 @@ export default {
     //border: teal 3px solid;
     grid-area: sectionOne;
     width: 80vw;
-    min-height: 80vmin;
-    margin-top: -4rem;
+    min-height: 80vh;
+    margin-top: -6rem;
     
     .container {
         //border: 2px purple solid;
@@ -98,6 +100,7 @@ export default {
 
 
         .face{
+            opacity: 0;
             position: relative;
             top: -7rem;
             width: 8.4rem;
@@ -114,6 +117,16 @@ export default {
             position: relative;
             top: -6rem;
             @include montserrat(1.2rem,0rem,300);
+            .ayoub-mask{
+                overflow: hidden;
+                .word > .char, .whitespace{
+
+                    transform: translateY(100%) rotateX(180deg);
+                    //transform: ;
+                    
+                }
+                //opacity: 0;
+            }
             
         }
 
@@ -121,12 +134,24 @@ export default {
             @include ivymode(3.2rem,0rem,400);
             position: relative;
             top: -5rem;
+            .desc-mask{
+                overflow: hidden;
+                .word > .char, .whitespace{
+
+                    transform: translateY(100%) rotateX(180deg);
+                    //transform: ;
+                    
+                }
+                
+                //opacity: 0;
+            }
 
             
         }
 
         .hello{
             //border: black 2px solid;
+            opacity: 0;
 
             
 
@@ -197,7 +222,7 @@ export default {
 
 .eclipse-one{
 
-    display: none;
+  //  display: none;
   position: absolute;
   top: 90px;
   left: 120px;

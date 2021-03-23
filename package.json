@@ -15,7 +15,9 @@
     "nuxt": "^2.14.12",
     "nuxt-gsap": "^0.1.4",
     "nuxt-mq": "^2.0.2",
+    "splitting": "^1.0.6",
     "vue-component-media-queries": "^1.0.0",
+    "vue-images-loaded": "^1.1.2",
     "vue-mq": "^1.0.1",
     "vue-screen": "^1.5.3"
   },
