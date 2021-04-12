@@ -166,7 +166,7 @@ export default {
   width: 600vw;
   height: 100vh !important;
   .content{
-      margin: 0;
+    margin: 0;
     padding: 0;
     background-color: #000;
     z-index: -50;

@@ -31,6 +31,8 @@ export default {
 
     },
     methods: {
+
+        
         
     }
 }
@@ -236,7 +238,7 @@ export default {
 }
 .eclipse-two{
 
-        display: none;
+    display: none;
   position: absolute;
   top: 490px;
   left: 886px;

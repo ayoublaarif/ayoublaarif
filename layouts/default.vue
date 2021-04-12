@@ -1,9 +1,6 @@
 <template>
-<div id="dd">
-    
     <Nuxt />
     
-</div>
 </template>
 
 <script>
@@ -97,7 +94,7 @@ $max_font: 18px;
   font-size: calc(6px + (22 - 6) * ((100vw - 320px) / (1600 - 320)));
   //@include fluid-type($min_width, $max_width, $min_font, $max_font); 
   //calc(4.5px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
-  scroll-behavior: smooth;
+  //scroll-behavior: smooth;
   font-family: Ivy Mode;
   -webkit-font-family: Ivy Mode;
   word-spacing: 1px;
@@ -121,7 +118,7 @@ body {
 
 @media (max-width: 768px){
 	html, body {
-		height: 100%;
+		//height: 100%;
     }
     :root {
       

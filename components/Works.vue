@@ -56,12 +56,12 @@ export default {
     data() {
     return {
       works : [
-        {id:0 ,className:"p1", ds_speed:"0.2", name:"Footiale", head:"- Follow my club", srcUrl:'s30', toUrl:'/works/fmc', m:'m-l-12', n:1, color:'#000'},
-        {id:1 ,className:"p2", ds_speed:"0.3", name:"Agdali", head:"- Students Monitoring", srcUrl:'s31', toUrl:'/works/as', m:'m-l-12', n:2, color:'#C80000'},
-		{id:2 ,className:"p3", ds_speed:"0.4", name:"Believe In Yourself", head:" - Donation of dresses", srcUrl:'s32', toUrl:'/works/biy', m:'m-l-12', n:3, color:'#C80000'},
-		{id:3 ,className:"p4", ds_speed:"0.5", name:"GGym ", head:"- Workout Equipmenet", srcUrl:'s33', toUrl:'/works/ggym', m:'m-l-12', n:4, color:'#14151c'},
-        {id:4 ,className:"p5", ds_speed:"0.6", name:"Roller Derby", head:"Follow my club", srcUrl:'s34', toUrl:'/works/roller-derby', m:'m-l-12', n:5, color:'#fffff'},
-        {id:5 ,className:"p6", ds_speed:"0.7", name:"Quuvo Generator", head:" - Automatic videos", srcUrl:'s35', toUrl:'/works/qg', m:'m-l-12', n:6, color:'#C80000'},
+        {id:0 ,className:"p1", ds_speed:"0.2", name:"Footiale", head:"Follow my club", srcUrl:'s30', toUrl:'/works/fmc', m:'m-l-12', n:1, color:'#000'},
+        {id:1 ,className:"p2", ds_speed:"0.3", name:"Agdali", head:"Students Monitoring", srcUrl:'s31', toUrl:'/works/as', m:'m-l-12', n:2, color:'#C80000'},
+		{id:2 ,className:"p3", ds_speed:"0.4", name:"Believe--In--Yourself", head:"Donation of dresses", srcUrl:'s32', toUrl:'/works/biy', m:'m-l-12', n:3, color:'#C80000'},
+		{id:3 ,className:"p4", ds_speed:"0.5", name:"GGym ", head:"Workout Equipmenet", srcUrl:'s33', toUrl:'/works/ggym', m:'m-l-12', n:4, color:'#14151c'},
+        {id:4 ,className:"p5", ds_speed:"0.6", name:"Roller--Derby", head:"Follow my club", srcUrl:'s34', toUrl:'/works/roller-derby', m:'m-l-12', n:5, color:'#fffff'},
+        {id:5 ,className:"p6", ds_speed:"0.7", name:"Quuvo--Generator", head:"Automatic videos", srcUrl:'s35', toUrl:'/works/qg', m:'m-l-12', n:6, color:'#C80000'},
     ],
     animatableProperties: {
             // translationX
@@ -308,15 +308,19 @@ export default {
 
             #work{
                 //border-top: #000000 solid 1px;
-                border-top: #000000 solid 1px;
+                border-top: #000000 solid 0.1rem;
                 //background-color: #000000;
                 padding: 2rem 1rem;
                 margin: 0 0;
 
+                &:last-child{
+                    border-bottom: #000000 solid 0.1rem;
+                }
+
             }
             .p{
                 display: flex;
-                text-transform: uppercase;
+                //text-transform: uppercase;
                 //font-family: haigrast;
                 text-decoration: none;
                 cursor: pointer;
@@ -340,7 +344,7 @@ export default {
                     .work-name{
                     //border: #000000 2px solid;
                 
-                        @include ivymode(2.4rem,0rem,400);
+                        @include ivymode(2.8rem,0rem,400);
                         line-height: 3rem;
                         margin-bottom: 0.4rem;
                         @include breakpoint(phone) { width: 75%; }

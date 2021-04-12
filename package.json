@@ -11,7 +11,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
     "core-js": "^3.8.3",
-    "locomotive-scroll": "4.0.1",
+    "locomotive-scroll": "4.0.6",
     "nuxt": "^2.14.12",
     "nuxt-gsap": "^0.1.4",
     "nuxt-mq": "^2.0.2",

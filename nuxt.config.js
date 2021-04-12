@@ -44,6 +44,8 @@ export default {
       src: '~/plugins/vue-imagesLoaded', 
       ssr: false 
     },
+    { src: '~/plugins/both.js' },
+    { src: '~/plugins/client.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

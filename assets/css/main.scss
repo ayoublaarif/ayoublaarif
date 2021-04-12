@@ -22,7 +22,7 @@ $frdColor: #EA5830;
   }
 
   @mixin montserrat($s,$sub,$w) {
-    @include fontfamily(manrope,$s,$sub,$w);
+    @include fontfamily(Dazzed,$s,$sub,$w);
   }
 
   @mixin ivymode($s,$sub,$w) {

@@ -3,10 +3,11 @@
     <div class="bg"></div>
     <div ref="bgt" class="bg-t" id="bgt"></div>
   <main id="main" ref="main" class="completed">
-    <Header/>
+    <Header v-on:headContact="headContact"/>
     <HomeHero/>
     <Services/>
     <Works v-on:giveColor="getColor"/>
+    <Contact />
     </main>
 </div>
 </template>
@@ -17,6 +18,8 @@ import Services from '@/components/Services.vue'
 import Works from '@/components/Works.vue'
 import HomeHero from '@/components/homeHero.vue'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+//import { ScrollTrigger } from '../node_modules/gsap/dist/ScrollTrigger.min.js'
+import Contact from '@/components/Contact.vue'
 
 
 
@@ -27,6 +30,7 @@ export default {
       lmSi: null,
       tr: null,
       bc: "#000",
+      progress:null,
     };
   },
     transition: {
@@ -61,6 +65,10 @@ export default {
   methods:{
     getColor(color){
       this.$refs.bgt.style.backgroundColor = color;
+    },
+
+    headContact(color){
+      this.lmSi.scrollTo(".me-works");
     },
 
     animateBefore(el){   
@@ -133,6 +141,11 @@ export default {
             })
             .to(".me-header .content", { opacity: 1, marginTop:"0%"},0)
             .to(".me-header ", {},0)
+
+            const lmSi = this.lmSi; 
+            this.initScrolltrigger(lmSi);
+            this.elementAnimation();
+            
             
     },
 
@@ -174,7 +187,7 @@ export default {
             //rotation: 10
         }, 0)
 
-        ScrollTrigger.create({
+        const st = ScrollTrigger.create({
           trigger:".me-services",
           start:"top 50%",
           end:"+=1400",
@@ -182,20 +195,45 @@ export default {
           animation:tl,
           scrub:true,
           pin:false
-        })
+        });
+
+
+
+        ScrollTrigger.addEventListener("refreshInit", () => {this.progress=st.progress;console.log(this.progress); } );
+        ScrollTrigger.addEventListener("refresh", () => st.scroll(this.progress * ScrollTrigger.maxScroll(window)));
     },
 
 
+    bgAnimation(){
+      const tl2= this.$gsap.timeline({
+            defaults: {duration: 4}
+        })
+        
+        .to("body", {
+            backgroundColor: "#44378E",
+            //rotation: 10
+        }, 0)
 
+        ScrollTrigger.create({
+          trigger:".me-contact",
+          start:"top 18%",
+          end:"+=400",
+          scroller:".app-scroll",
+          animation:tl2,
+          scrub:true,
+          pin:false
+        })
+    }
 
   },
 
-  components: { Services, Works, HomeHero },
+  components: { Services, Works, HomeHero, Contact },
   beforeMount(){
   },
   
   
   mounted() {
+    console.log("width is ",this.$refs.main.style.width+'px');
     this.$gsap.registerPlugin(ScrollTrigger);
 
 
@@ -207,7 +245,7 @@ export default {
               el: this.$refs.app,
               smooth: true
     });
-    const lmSi = this.lmSi; 
+    
 
     this.lmSi.scrollTo("#main");
 
@@ -218,8 +256,10 @@ export default {
 
     const _self = this;
 
-    this.initScrolltrigger(lmSi);
-    this.elementAnimation();
+    
+    //this.bgAnimation();
+
+    
 
     
 
@@ -231,10 +271,15 @@ export default {
 
 
     // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-    // ScrollTrigger.addEventListener("refresh", () => this.lmSi.update());
+    //ScrollTrigger.addEventListener("refresh", this.lmSi.update());
+
+     window.addEventListener("resize", () => {
+       ScrollTrigger.refresh();
+       this.lmSi.update();
+     });
 
     // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-    // ScrollTrigger.refresh();
+     ScrollTrigger.refresh();
 
   },
   
@@ -248,7 +293,7 @@ export default {
  
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $t-duration: 800ms;
 
 
@@ -281,7 +326,8 @@ main{
   'header'
   'sectionOne'
   'section-two'
-  'section-three';
+  'section-three'
+  'contact';
   grid-row-gap: 4rem;
 
 }
@@ -292,7 +338,6 @@ main{
         width: 100vw;
         height: 0%;
         z-index: 800;
-        
         background-color: $bgc;
         opacity: 1;
         }

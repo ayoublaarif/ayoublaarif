@@ -7,7 +7,7 @@
         <!--<p>Services</p>
         <p class="works">Works</p>
         <p class="about">About</p>-->
-        <a class="contact" href="#contact">Contact</a>
+        <a @click="headContact()" href="mailto:me@ayoublaarif.com" class="contact">Contact</a>
     </div>
     </div>
 
@@ -23,6 +23,10 @@ export default {
 
     },
     methods: {
+
+        headContact(){
+            //this.$emit('headContact');
+        }
         
     }
 }
